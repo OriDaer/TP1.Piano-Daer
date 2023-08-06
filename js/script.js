@@ -1,13 +1,6 @@
 const synth = new Tone.Synth().toDestination();
-synth.triggerAttackRelease("C4", "8n");
-
 const elem = document.getElementById("miBoton");
 elem.addEventListener("click",function() {console.log('ahdjsgdh')});
-/////NOTAS////
-  // reb es un re + grave
-  //width ancho ,heigth alto 
-  //GRAVE FRECUENCIA + BAJA 
-  //AGUDO FRECUENCIA + ALTA
 
   let bot1,bot2;//var botones selectivos
   let slider;
@@ -43,7 +36,7 @@ function draw() {
 
   function teclas(){
     // Teclas blancas
-  for(let a=0; a<7;a++){//tb
+  for(let a=0; a<7;a++){
       fill(255)
   rect(x, 160, 50, 155);
     x=x+51;
@@ -112,69 +105,64 @@ function textTeclas(){
     textSize(10);
     text('A#', 348, 200);
   }
-  
+
   function teclasSong() {//func sonidos de teclas hacer q entre una cordena y otra se precione y tenga sonido
     //console.log("x:", mouseX);
     //console.log("y:", mouseY);
     // mouse is pressed xq no t lo toma cm 1 funcion
     if (mouseIsPressed && mouseX > 49 && mouseX < 100 && mouseY > 160 && mouseY < 315) { //160+ 155
       console.log('do');
-      const synth = new Tone.Synth().toDestination();
-      
-      //synth.triggerAttackRelease("C4", "8n");
+      synth.triggerAttackRelease("C4", "8n");//do
     }
     if(mouseIsPressed && mouseX > 100 && mouseX < 151 && mouseY > 160 && mouseY < 315){
       console.log('re');
-      synth.triggerAttackRelease("D4", "8n");
+      synth.triggerAttackRelease("D4", "8n");//re
     }
     if(mouseIsPressed && mouseX > 151 && mouseX < 202 && mouseY > 160 && mouseY < 315){
       console.log('mi');
-       const synth = new Tone.Synth().toDestination();
           synth.triggerAttackRelease("E4", "8n");//mi
     }
     if(mouseIsPressed && mouseX > 202 && mouseX < 253 && mouseY > 160 && mouseY < 315){
       console.log('fa');
-    mySound3.play();//fa
+    synth.triggerAttackRelease("F4", "8n");//fa
     }
     if(mouseIsPressed && mouseX > 253 && mouseX < 304 && mouseY > 160 && mouseY < 315){
       console.log('sol');
-    mySound4.play();//sol
+      synth.triggerAttackRelease("G4", "8n");//sol
     }
     if(mouseIsPressed && mouseX > 304 && mouseX < 355 && mouseY > 160 && mouseY < 315){
       console.log('la');
-    mySound5.play();//la 
+      synth.triggerAttackRelease("A4", "8n");//la 
     }
     if(mouseIsPressed && mouseX > 355 && mouseX < 406 && mouseY > 160 && mouseY < 315){
       console.log('si');
-    mySound6.play();//si
+      synth.triggerAttackRelease("B4", "8n");//si
     }
-    //poner el sonido a las teclas ch y asi
     //do,re,fa,sol,la
         if (mouseIsPressed && mouseX > 86.8 && mouseX < 111.8 && mouseY > 160 && mouseY < 240) { 
       console.log('do#');
-    Sound.play();//do
+      synth.triggerAttackRelease("C#", "8n");//do
     }
           if (mouseIsPressed && mouseX > 162.8 && mouseX < 187.8 && mouseY > 160 && mouseY < 240) { 
       console.log('re#');
-    Sound1.play();//re
+      synth.triggerAttackRelease("D#", "8n");//re
     }
           if (mouseIsPressed && mouseX > 314.8 && mouseX < 339.8 && mouseY > 160 && mouseY < 240) { 
       console.log('fa#');
-    Sound3.play();//fa
+      synth.triggerAttackRelease("F#", "8n");//fa
     }
          if (mouseIsPressed && mouseX > 390.8 && mouseX < 415.8 && mouseY > 160 && mouseY < 240) { 
       console.log('sol#');
-    Sound4.play();//sol
+      synth.triggerAttackRelease("G#", "8n");//sol
     }
          if (mouseIsPressed && mouseX > 466.8 && mouseX < 491.8 && mouseY > 160 && mouseY < 240) { 
       console.log('la#');
-    Sound5.play();//la
+      synth.triggerAttackRelease("A#", "8n");//la
     }
-  
   }
 
   function botSlider(){
-    slider = createSlider(0, 255, 100);
+   slider = createSlider(0, 255, 100);
    slider.position(60, 10);
    slider.style('width', '80px');
  }
@@ -254,24 +242,6 @@ function filtroMap(){////FILTRO DE FRECUENCIAS
   // Mapea la posición vertical del ratón (mouseY) a la resonancia (aumento de volumen) en la frecuencia de corte
  // filterRes = map(mouseY, 0, height, 15, 5);
   filtr.set(filterFreq, filterRes); // define los parámetros del filtro
-}
-
-function preload() {//func sonido
-  soundFormats('mp3');
-  mySound = loadSound('6669.mp3');//do
-  mySound1 = loadSound('6670.mp3');//re
-  mySound2 = loadSound('6672.mp3');//mi
-  mySound3 = loadSound('6674.mp3');//fa
-  mySound4 = loadSound('6673.mp3');//sol
-  mySound5 = loadSound('6671.mp3');//la
-  mySound6 =loadSound('guitar.mp3');//si
-  
-  Sound = loadSound('TecNegras/do.mp3');//do#
-  Sound1 = loadSound('TecNegras/re.mp3');//re#
-  Sound3 = loadSound('TecNegras/fa.mp3');//fa#
-  Sound4 = loadSound('TecNegras/sol.mp3');//sol#
-  Sound5 = loadSound('TecNegras/la.mp3');//la#
-  
 }
 
 function mySelect() { //funcion para cuando apretes los botones selectores
